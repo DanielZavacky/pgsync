@@ -1,0 +1,145 @@
+[
+	{
+		"database": "shop",
+		"index": "products_test",
+		"nodes": {
+			"table": "products",
+			"label": "products",
+			"schema": "public",
+			"columns": [
+				"id",
+				"name"
+			],
+			"children": [
+				{
+					"table": "users",
+					"label": "seller",
+					"columns": [
+						"id",
+						"name"
+					],
+					"relationship": {
+						"variant": "object",
+						"type": "one_to_one",
+						"foreign_key": {
+							"parent": [
+								"sellerID"
+							],
+							"child": [
+								"id"
+							]
+						}
+					},
+					"children": [
+						{
+							"table": "contacts",
+							"label": "contact",
+							"columns": [
+								"id",
+								"name"
+							],
+							"relationship": {
+								"variant": "object",
+								"type": "one_to_many",
+								"foreign_key": {
+									"parent": [
+										"contactID"
+									],
+									"child": [
+										"id"
+									]
+								}
+							},
+							"children": [
+								{
+									"table": "contact_items",
+									"label": "contactItems",
+									"columns": [
+										"id",
+										"name"
+									],
+									"relationship": {
+										"variant": "object",
+										"type": "one_to_many",
+										"foreign_key": {
+											"parent": [
+												"id"
+											],
+											"child": [
+												"contactID"
+											]
+										}
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"table": "users",
+					"label": "renter",
+					"columns": [
+						"id",
+						"name"
+					],
+					"relationship": {
+						"variant": "object",
+						"type": "one_to_one",
+						"foreign_key": {
+							"parent": [
+								"renterID"
+							],
+							"child": [
+								"id"
+							]
+						}
+					},
+					"children": [
+						{
+							"table": "contacts",
+							"label": "contact",
+							"columns": [
+								"id",
+								"name"
+							],
+							"relationship": {
+								"variant": "object",
+								"type": "one_to_many",
+								"foreign_key": {
+									"parent": [
+										"contactID"
+									],
+									"child": [
+										"id"
+									]
+								}
+							},
+							"children": [
+								{
+									"table": "contact_items",
+									"label": "contactItems",
+									"columns": [
+										"id",
+										"name"
+									],
+									"relationship": {
+										"variant": "object",
+										"type": "one_to_many",
+										"foreign_key": {
+											"parent": [
+												"id"
+											],
+											"child": [
+												"contactID"
+											]
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	}
+]
